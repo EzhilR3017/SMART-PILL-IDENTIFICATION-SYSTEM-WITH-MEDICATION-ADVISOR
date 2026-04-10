@@ -1,0 +1,273 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Title -->
+    <title>Mediplus - Free Medical and Doctor Directory HTML Template.</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="assets/css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+</head>
+<body>
+    
+    <!-- Header Area -->
+    <header class="header_section">
+        <div class="header_top">
+            <div class="container-fluid">
+                <div class="contact_link-container">
+                    <a href="#" class="contact_link1">
+                        <h1>Pill Identification System</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="header_bottom" id="header_bottom">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container">
+                    <a class="navbar-brand">
+                        <span>
+                            <h1>Reliable Pill Identification</h1>
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="userLoginForm">User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="adminLoginForm">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="userRegisterForm">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#why-choose section">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    
+    <!-- Slider Area -->
+    <section class="registration-form section margin-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h2>Register for Pill Identification System</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-12">
+                    <form action="userRegister" method="post">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="login-id" class="col-sm-2 col-form-label">Login ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="login-id" name="loginid" placeholder="Choose a login ID" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                            <div class="col-sm-10">
+                                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="locality" class="col-sm-2 col-form-label">Locality</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="locality" name="locality" placeholder="Enter your locality" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="state" class="col-sm-2 col-form-label">State</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <!--/ End Slider Area -->
+        
+        <!-- Start Features -->
+        <section class="features section margin-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Your Trusted Partner for Safe and Accurate Pill Identification</h2>
+                            <img src="assets/img/image.jpeg" alt="#">
+                            <p>We are dedicated to providing innovative solutions that enhance healthcare safety and accuracy in medication management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <!-- Start Single Feature -->
+                        <div class="single-features">
+                            <div class="single-icon">
+                                <i class="icofont icofont-pill"></i>
+                            </div>
+                            <h3>Accurate Pill Identification</h3>
+                            <p>Our system uses advanced image processing to accurately identify pills based on color, shape, and imprint, minimizing errors.</p>
+                        </div>
+                        <!-- End Single Feature -->
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <!-- Start Single Feature -->
+                        <div class="single-features">
+                            <div class="single-icon">
+                                <i class="icofont icofont-computer"></i>
+                            </div>
+                            <h3>Real-Time Image Analysis</h3>
+                            <p>Get instant results through real-time analysis, powered by deep learning algorithms for fast and reliable pill recognition.</p>
+                        </div>
+                        <!-- End Single Feature -->
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <!-- Start Single Feature -->
+                        <div class="single-features last">
+                            <div class="single-icon">
+                                <i class="icofont icofont-heart-beat-alt"></i>
+                            </div>
+                            <h3>Enhanced Patient Safety</h3>
+                            <p>Our system helps healthcare providers and consumers make safe medication decisions, supporting accurate dispensing practices.</p>
+                        </div>
+                        <!-- End Single Feature -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Features -->
+        
+        <!-- Start Why choose -->
+        <section class="why-choose section margin-top" id="why-choose section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Our Advanced Services for Accurate Pill Identification</h2>
+							<img src="assets/img/section-img.jpg" alt="#">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <!-- Start Choose Left -->
+                        <div class="choose-left">
+                            <h3>About Our System</h3>
+                            <p>Our Pill Identification System is designed to aid pharmacists, healthcare professionals, and consumers in identifying medications accurately, minimizing errors, and enhancing patient safety.</p>
+                        </div>
+                        <!-- End Choose Left -->
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <!-- Start Choose Right -->
+                        <div class="choose-right">
+                            <h3>Our Technology</h3>
+                            <p>We utilize cutting-edge deep learning techniques combined with image processing to ensure fast and accurate pill identification through visual features such as color, shape, and imprint.</p>
+                        </div>
+                        <!-- End Choose Right -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Why choose -->
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>© 2024 Pill Identification System | All Rights Reserved by MSL Corporations</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ End Footer Area -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/slicknav.min.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/magnific-popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+</html>

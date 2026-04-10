@@ -1,0 +1,565 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Title -->
+    <title>Pill Identification System - User Home</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="assets/css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+</head>
+<body>
+    
+    <!-- Header Area -->
+    <header class="header_section">
+        <div class="header_top">
+            <div class="container-fluid">
+                <div class="contact_link-container">
+                    <a href="#" class="contact_link1">
+                        <h1>Pill Identification System</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="header_bottom" id="header_bottom">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container">
+                    <a class="navbar-brand">
+                        <span>
+                            <h1>Reliable Pill Identification</h1>
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="userHome">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="prediction">Prediction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="classificationView">Classification View</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+    
+    <!-- Slider Area -->
+   <!-- Start Features -->
+   <section class="features section margin-top">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title">
+                    <h2>Safe and Accurate Pill Identification</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-lg-8">
+                {% if Error %}
+                <div class="alert alert-danger">
+                    <h4>Error: {{ Error }}</h4>
+                </div>
+                {% endif %}
+                
+                <!-- Main Prediction Results -->
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">🔍 Pill Identification Result</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Pill Name: <span class="text-primary">{{ pill_name }}</span></h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Confidence: <span class="text-success">{{ confidence }}</span></h4>
+                            </div>
+                        </div>
+                        
+                        {% if confidence_warning %}
+                        <div class="alert alert-danger mt-3">
+                            <strong>{{ confidence_warning }}</strong>
+                        </div>
+                        {% endif %}
+                        
+                        {% if warning %}
+                        <div class="alert alert-warning mt-3">
+                            <strong>Additional Warning:</strong> {{ warning }}
+                        </div>
+                        {% endif %}
+                        
+                        {% if alternatives %}
+                        <div class="mt-3">
+                            <h5>Top Alternatives:</h5>
+                            <ol>
+                                {% for pill, prob in alternatives %}
+                                <li>{{ pill }}: {{ prob|floatformat:2 }}%%</li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Detailed Pill Information -->
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">📋 Detailed Information for {{ pill_name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>💊 Dosage</h5>
+                                <p class="text-muted">{{ dosage }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>⏰ Consumption Time</h5>
+                                <p class="text-muted">{{ consumption_time }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <h5>🎯 Usage</h5>
+                                <p class="text-muted">{{ usage }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h5>⚠️ Side Effects</h5>
+                                <p class="text-warning">{{ side_effects }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>🚨 Precautions</h5>
+                                <p class="text-danger">{{ precautions }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Advisor Section -->
+                <div class="card mt-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0">💬 Ask Medical Advisor</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">
+                            <small>💡 Ask any questions about this pill. The advisor provides general medical information only — always consult a healthcare professional for personal medical advice.</small>
+                        </p>
+                        <div class="form-group">
+                            <label for="advisorQuestion">Your Question:</label>
+                            <input type="text" id="advisorQuestion" class="form-control" placeholder="e.g., What are the side effects? Is it safe during pregnancy?" />
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-warning" id="askAdvisorBtn" onclick="askAdvisor()">Ask Advisor</button>
+                            <button type="button" class="btn btn-info" id="voiceMicBtn" onclick="startVoiceInputForAdvisor()" title="Click to enter question via voice">
+                                <i class="fa fa-microphone"></i> Voice
+                            </button>
+                        </div>
+                        <button class="btn btn-secondary" onclick="clearAdvisorResponse()" style="display:none;" id="clearBtn">Clear</button>
+                        
+                        <!-- Voice Recording Indicator -->
+                        <div id="voiceRecordingIndicator" class="alert alert-info mt-2" style="display:none;">
+                            <small><i class="fa fa-spinner fa-spin"></i> Listening... Speak your question.</small>
+                        </div>
+                        
+                        <!-- Voice Error Alert -->
+                        <div id="voiceErrorAlert" class="alert alert-danger mt-2" style="display:none;">
+                            <small id="voiceErrorText"></small>
+                        </div>
+                        
+                        <div id="advisorLoading" style="display:none;" class="mt-3">
+                            <p><em>Loading advisor response...</em></p>
+                        </div>
+                        
+                        <div id="advisorResponse" class="alert alert-info mt-3" style="display:none;">
+                            <h6>Advisor Response:</h6>
+                            <p id="responseText"></p>
+                        </div>
+                        
+                        <div id="advisorError" class="alert alert-danger mt-3" style="display:none;">
+                            <h6>Error:</h6>
+                            <p id="errorText"></p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if AllProbabilities %}
+                <div class="card mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">📊 All Prediction Probabilities</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for pill, prob in AllProbabilities.items %}
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between">
+                                    <span>{{ pill }}:</span>
+                                    <span class="badge badge-primary">{{ prob|floatformat:2 }}%%</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <!-- Text-based Medication Query Section -->
+                <form action="/prediction" method="POST" enctype="multipart/form-data" class="mt-4">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="pillImage">Upload Pill Image:</label>
+                        <input type="file" id="pillImage" name="image" accept="image/*" required class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Identify Pill</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--/ End Features -->
+
+    
+    <!-- Features Section -->
+    <section class="features section margin-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Your Trusted Tool for Safe and Accurate Pill Identification</h2>
+                        <img src="assets/img/image.jpeg" alt="#">
+                        <p>We are committed to providing innovative solutions that enhance healthcare safety and accuracy in medication management.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-features">
+                        <div class="single-icon">
+                            <i class="icofont icofont-pill"></i>
+                        </div>
+                        <h3>Accurate Pill Identification</h3>
+                        <p>Our system uses advanced image processing to accurately identify pills based on color, shape, and imprint, minimizing errors.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-features">
+                        <div class="single-icon">
+                            <i class="icofont icofont-computer"></i>
+                        </div>
+                        <h3>Real-Time Image Analysis</h3>
+                        <p>Get instant results through real-time analysis, powered by deep learning algorithms for fast and reliable pill recognition.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-features last">
+                        <div class="single-icon">
+                            <i class="icofont icofont-heart-beat-alt"></i>
+                        </div>
+                        <h3>Enhanced Patient Safety</h3>
+                        <p>Our system helps healthcare providers and consumers make safe medication decisions, supporting accurate dispensing practices.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Features Section -->
+
+    <!-- Footer Area -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>© 2024 Pill Identification System | All Rights Reserved by MSL Corporations</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Area -->
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/slicknav.min.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/magnific-popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+    // ================================================================
+    // BROWSER-NATIVE WEB SPEECH API FOR VOICE INPUT
+    // ================================================================
+    
+    let voiceRecordingInProgress = false;
+    let recognition = null;
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Initialize Web Speech API on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeWebSpeechAPI();
+        
+        // Enter key to submit question
+        const input = document.getElementById('advisorQuestion');
+        if (input) {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    askAdvisor();
+                }
+            });
+        }
+    });
+
+    function initializeWebSpeechAPI() {
+        /**
+         * Initialize browser Web Speech API.
+         * Uses webkitSpeechRecognition for Chrome/Edge or SpeechRecognition for Firefox.
+         */
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        if (!SpeechRecognition) {
+            console.warn('Web Speech API not supported in this browser');
+            return;
+        }
+        
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+        
+        // When speech is recognized
+        recognition.onresult = function(event) {
+            let transcript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                transcript += event.results[i][0].transcript;
+            }
+            
+            if (transcript.trim()) {
+                console.log('Voice recognized:', transcript);
+                // Populate the textbox
+                document.getElementById('advisorQuestion').value = transcript.trim();
+                document.getElementById('advisorQuestion').focus();
+            }
+        };
+        
+        // When recording ends
+        recognition.onend = function() {
+            voiceRecordingInProgress = false;
+            document.getElementById('voiceRecordingIndicator').style.display = 'none';
+            document.getElementById('voiceMicBtn').disabled = false;
+        };
+        
+        // Handle errors
+        recognition.onerror = function(event) {
+            voiceRecordingInProgress = false;
+            document.getElementById('voiceRecordingIndicator').style.display = 'none';
+            document.getElementById('voiceMicBtn').disabled = false;
+            
+            let errorMessage = 'Could not recognize voice. ';
+            switch(event.error) {
+                case 'network':
+                    errorMessage += 'Network error - check internet connection.';
+                    break;
+                case 'no-speech':
+                    errorMessage += 'No speech detected. Please speak clearly.';
+                    break;
+                case 'audio-capture':
+                    errorMessage += 'Microphone not available. Check permissions.';
+                    break;
+                case 'not-allowed':
+                    errorMessage += 'Microphone permission denied. Allow access in browser settings.';
+                    break;
+                default:
+                    errorMessage += 'Try again.';
+            }
+            
+            const errorAlert = document.getElementById('voiceErrorAlert');
+            document.getElementById('voiceErrorText').textContent = errorMessage;
+            errorAlert.style.display = 'block';
+            
+            console.error('Speech recognition error:', event.error);
+        };
+    }
+
+    function startVoiceInputForAdvisor() {
+        /**
+         * Start voice recording using Web Speech API.
+         * Voice acts as an input method only.
+         */
+        // Check browser support
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            alert('Web Speech API is not supported in your browser. Please use Chrome, Edge, or Firefox.');
+            return;
+        }
+        
+        if (voiceRecordingInProgress || !recognition) {
+            return;
+        }
+
+        console.log('Starting voice input for advisor question...');
+        voiceRecordingInProgress = true;
+
+        // Show recording indicator
+        const recordingIndicator = document.getElementById('voiceRecordingIndicator');
+        const errorAlert = document.getElementById('voiceErrorAlert');
+        recordingIndicator.style.display = 'block';
+        errorAlert.style.display = 'none';
+
+        // Disable microphone button during recording
+        document.getElementById('voiceMicBtn').disabled = true;
+
+        // Start recognition
+        recognition.start();
+    }
+
+    // ================================================================
+    // EXISTING MEDICAL ADVISOR FUNCTIONALITY (unchanged)
+    // ================================================================
+    
+
+    function askAdvisor() {
+        const question = document.getElementById('advisorQuestion').value.trim();
+        if (!question) {
+            alert('Please enter a question');
+            return;
+        }
+
+        const pillName = '{{ pill_name }}';
+        const dosage = '{{ dosage }}';
+        const usage = '{{ usage }}';
+        const sideEffects = '{{ side_effects }}';
+        const precautions = '{{ precautions }}';
+        const consumptionTime = '{{ consumption_time }}';
+        const confidence = '{{ confidence }}';
+
+        // Show loading
+        document.getElementById('advisorLoading').style.display = 'block';
+        document.getElementById('advisorResponse').style.display = 'none';
+        document.getElementById('advisorError').style.display = 'none';
+
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('question', question);
+        formData.append('pill_name', pillName);
+        formData.append('dosage', dosage);
+        formData.append('usage', usage);
+        formData.append('side_effects', sideEffects);
+        formData.append('precautions', precautions);
+        formData.append('consumption_time', consumptionTime);
+        formData.append('confidence', confidence);
+        formData.append('csrfmiddlewaretoken', getCookie('csrftoken'));
+
+        // Call advisor endpoint
+        fetch('/api/ask_advisor/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('advisorLoading').style.display = 'none';
+            if (data.answer) {
+                document.getElementById('responseText').textContent = data.answer;
+                document.getElementById('advisorResponse').style.display = 'block';
+                document.getElementById('clearBtn').style.display = 'inline-block';
+            } else if (data.error) {
+                document.getElementById('errorText').textContent = data.error;
+                document.getElementById('advisorError').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            document.getElementById('advisorLoading').style.display = 'none';
+            document.getElementById('errorText').textContent = 'Error: ' + error.message;
+            document.getElementById('advisorError').style.display = 'block';
+        });
+    }
+
+    function clearAdvisorResponse() {
+        document.getElementById('advisorQuestion').value = '';
+        document.getElementById('advisorResponse').style.display = 'none';
+        document.getElementById('advisorError').style.display = 'none';
+        document.getElementById('clearBtn').style.display = 'none';
+    }
+    </script>
+
